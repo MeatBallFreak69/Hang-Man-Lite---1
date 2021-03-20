@@ -74,6 +74,10 @@ namespace Hang_Man_Lite___1
                 Application.ExitThread();
             }
             
+            if (index > -1)
+            {
+                displayWord.Replace(displayWord[index], Convert.ToChar(toFind));
+            }
             lblLetters.Text = $"Found '{toFind}' in '{word}' at position {index}";
             txtGuess.Text = String.Empty;
         }
