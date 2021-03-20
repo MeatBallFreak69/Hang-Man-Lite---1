@@ -80,6 +80,7 @@ namespace Hang_Man_Lite___1
             // txtGuess
             // 
             this.txtGuess.Location = new System.Drawing.Point(278, 279);
+            this.txtGuess.MaxLength = 1;
             this.txtGuess.Name = "txtGuess";
             this.txtGuess.Size = new System.Drawing.Size(36, 20);
             this.txtGuess.TabIndex = 5;
