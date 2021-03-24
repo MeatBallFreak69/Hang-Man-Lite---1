@@ -37,6 +37,9 @@ namespace Hang_Man_Lite___1
             this.btnGuess = new System.Windows.Forms.Button();
             this.imgHang = new System.Windows.Forms.PictureBox();
             this.lblWord = new System.Windows.Forms.Label();
+            this.txtInputWord = new System.Windows.Forms.TextBox();
+            this.lblInstructions2 = new System.Windows.Forms.Label();
+            this.btnInput = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgHang)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,11 +119,41 @@ namespace Hang_Man_Lite___1
             this.lblWord.TabIndex = 7;
             this.lblWord.Text = "--------";
             // 
+            // txtInputWord
+            // 
+            this.txtInputWord.Location = new System.Drawing.Point(199, 339);
+            this.txtInputWord.Name = "txtInputWord";
+            this.txtInputWord.Size = new System.Drawing.Size(100, 20);
+            this.txtInputWord.TabIndex = 8;
+            // 
+            // lblInstructions2
+            // 
+            this.lblInstructions2.AutoSize = true;
+            this.lblInstructions2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstructions2.Location = new System.Drawing.Point(196, 314);
+            this.lblInstructions2.Name = "lblInstructions2";
+            this.lblInstructions2.Size = new System.Drawing.Size(148, 13);
+            this.lblInstructions2.TabIndex = 9;
+            this.lblInstructions2.Text = "Input word to guess here";
+            // 
+            // btnInput
+            // 
+            this.btnInput.Location = new System.Drawing.Point(305, 337);
+            this.btnInput.Name = "btnInput";
+            this.btnInput.Size = new System.Drawing.Size(75, 23);
+            this.btnInput.TabIndex = 11;
+            this.btnInput.Text = "Input Word";
+            this.btnInput.UseVisualStyleBackColor = true;
+            this.btnInput.Click += new System.EventHandler(this.btnInput_Click);
+            // 
             // frmHangman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 371);
+            this.Controls.Add(this.btnInput);
+            this.Controls.Add(this.lblInstructions2);
+            this.Controls.Add(this.txtInputWord);
             this.Controls.Add(this.lblWord);
             this.Controls.Add(this.btnGuess);
             this.Controls.Add(this.txtGuess);
@@ -148,6 +181,9 @@ namespace Hang_Man_Lite___1
         private System.Windows.Forms.TextBox txtGuess;
         private System.Windows.Forms.Button btnGuess;
         private System.Windows.Forms.Label lblWord;
+        private System.Windows.Forms.TextBox txtInputWord;
+        private System.Windows.Forms.Label lblInstructions2;
+        private System.Windows.Forms.Button btnInput;
     }
 }
 
