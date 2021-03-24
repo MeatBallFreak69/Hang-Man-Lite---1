@@ -25,7 +25,7 @@ namespace Hang_Man_Lite___1
         private void frmHangman_Load(object sender, EventArgs e)
         {
             word = "COMPUTER";
-            displayWord = "_ _ _ _ _ _ _ _";
+            displayWord = "--------";
             lblWord.Text = displayWord;
             lstGuessedWords.DataSource = letters;
         }
@@ -35,7 +35,6 @@ namespace Hang_Man_Lite___1
             txtGuess.Text = txtGuess.Text.ToUpper();
             if (letters.Contains(txtGuess.Text))
             {
-                letters.Remove(txtGuess.Text);
                 MessageBox.Show($"You have already entered {txtGuess.Text}, please enter a new number", "Error");
                 txtGuess.Text = String.Empty;
             }
@@ -45,17 +44,20 @@ namespace Hang_Man_Lite___1
         {
             string toFind = txtGuess.Text;
             int index = word.IndexOf(txtGuess.Text);
-            
+            int guessIndex = word.IndexOf(toFind);
+
             if (index == -1)
             {
-                guessCounter += 1;
-                letters.Add(toFind);
-                lstGuessedWords.DataSource = null;
-                lstGuessedWords.DataSource = letters;
+                    guessCounter += 1;
+                    letters.Add(toFind);
+                    txtGuess.Text = String.Empty;
+                    lstGuessedWords.DataSource = null;
+                    lstGuessedWords.DataSource = letters;
+                
             }
             else if (toFind == String.Empty)
             {
-                MessageBox.Show("Please enter a valid letter", "Error");
+                MessageBox.Show("Please fill in the textbox with an appropriate guess!", "Error");
             }
 
             if (guessCounter == 1)
@@ -74,12 +76,21 @@ namespace Hang_Man_Lite___1
                 Application.ExitThread();
             }
             
-            if (index > -1)
+            if (index >= 0)
             {
-                displayWord.Replace(displayWord[index], Convert.ToChar(toFind));
+                displayWord = displayWord.Remove(guessIndex, 1);
+                displayWord = displayWord.Insert(guessIndex, toFind);
+                lblWord.Text = displayWord;
+                if (displayWord == word)
+                {
+                    MessageBox.Show("You win!", "Congrats!");
+                    Application.Restart();
+                    Application.ExitThread();
+                }
+                lblLetters.Text = $"Found '{toFind}' in '{word}' at position {index}";
+                txtGuess.Text = String.Empty;
             }
-            lblLetters.Text = $"Found '{toFind}' in '{word}' at position {index}";
-            txtGuess.Text = String.Empty;
+            
         }
     }
 }

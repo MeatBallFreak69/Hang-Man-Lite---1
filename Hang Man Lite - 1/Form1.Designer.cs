@@ -109,12 +109,12 @@ namespace Hang_Man_Lite___1
             // lblWord
             // 
             this.lblWord.AutoSize = true;
-            this.lblWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWord.Location = new System.Drawing.Point(8, 303);
+            this.lblWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWord.Location = new System.Drawing.Point(-1, 302);
             this.lblWord.Name = "lblWord";
-            this.lblWord.Size = new System.Drawing.Size(338, 55);
+            this.lblWord.Size = new System.Drawing.Size(208, 73);
             this.lblWord.TabIndex = 7;
-            this.lblWord.Text = "_ _ _ _ _ _ _ _";
+            this.lblWord.Text = "--------";
             // 
             // frmHangman
             // 
