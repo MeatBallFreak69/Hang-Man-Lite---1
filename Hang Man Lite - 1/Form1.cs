@@ -19,8 +19,11 @@ namespace Hang_Man_Lite___1
         string displayWord;
         int guessCounter = 0;
         List<string> letters = new List<string>();
+        List<string> Words = new List<string>();
         bool onePlayer;
         bool twoPlayer;
+        char guess;
+        Random randomWord = new Random();
 
         public frmHangman()
         {
@@ -31,11 +34,7 @@ namespace Hang_Man_Lite___1
 
         private void frmHangman_Load(object sender, EventArgs e)
         {
-            /*frmSelectPlayerCount formPlayerCount = new frmSelectPlayerCount();
-            formPlayerCount.Show();*/
-
-
-            //Player select controls/
+            //Player amount select controls/
             btnOnePlayer.BackColor = SystemColors.Control;
             btnOnePlayer.Name = "btnOnePlayer";
             btnOnePlayer.Text = "One Player";
@@ -62,7 +61,6 @@ namespace Hang_Man_Lite___1
                 lblWord.Text = displayWord;
                 lstGuessedWords.DataSource = letters;
             }
-
             Controls.Add(btnOnePlayer);
             Controls.Add(btnTwoPlayer);
             Controls.Add(lblSelectPlayerCount);
@@ -70,6 +68,7 @@ namespace Hang_Man_Lite___1
             btnOnePlayer.Click += new EventHandler(this.btnOnePlayer_Click);
             btnTwoPlayer.Click += new EventHandler(this.btnTwoPlayer_Click);
 
+            
         }
 
         private void txtGuess_TextChanged(object sender, EventArgs e)
@@ -86,8 +85,35 @@ namespace Hang_Man_Lite___1
         {
             string toFind = txtGuess.Text;
             int index = word.IndexOf(toFind);
-
-            if (index < 0 && toFind.Length > 0)
+            guess = Convert.ToChar(toFind);
+            
+            if (word.Contains(toFind))// If the chosen word has the letter guess
+            {
+                foreach (char j in word)// Iterate through every character
+                {
+                    if (j.Equals(guess))// If the character = the letter guess
+                    {
+                        int searchIndex = word.IndexOf(j);// Get the index of j
+                        while (searchIndex > -1)
+                        {
+                            displayWord = displayWord.Remove(searchIndex, 1).Insert(searchIndex, j.ToString());
+                            searchIndex = word.IndexOf(j, searchIndex + 1);
+                            lblWord.Text = displayWord;
+                            if (displayWord == word)
+                            {
+                                MessageBox.Show("You win!", "Congrats!");
+                                Application.Restart();
+                                Application.ExitThread();
+                            }
+                        }
+                    }
+                }
+            }
+            else if (toFind == String.Empty)
+            {
+                MessageBox.Show("Please fill in the textbox with an appropriate guess!", "Error");
+            }
+            else
             {
               guessCounter += 1;
               letters.Add(toFind);
@@ -110,29 +136,7 @@ namespace Hang_Man_Lite___1
               Application.ExitThread();
               }
             }
-            else if (toFind == String.Empty)
-            {
-                MessageBox.Show("Please fill in the textbox with an appropriate guess!", "Error");
-            }
-             else if (toFind.Length >0)
-            {
-                for (int i = 1; i<= word.Length; i++)
-                {
-                    displayWord = displayWord.Remove(index, 1);
-                    displayWord = displayWord.Insert(index, toFind);
-                    lblWord.Text = displayWord;
-
-                }
-                    
-                if (displayWord == word)
-                {
-                    MessageBox.Show("You win!", "Congrats!");
-                    Application.Restart();
-                    Application.ExitThread();
-                }
-                txtGuess.Text = String.Empty;
-            }
-            
+            txtGuess.Text = String.Empty;
         }
 
         private void btnInput_Click(object sender, EventArgs e)
@@ -151,12 +155,7 @@ namespace Hang_Man_Lite___1
 
         private void frmHangman_MouseHover(object sender, EventArgs e)
         {
-            if (onePlayer == true)
-            {
-                lblInstructions2.Visible = false;
-                txtInputWord.Visible = false;
-                btnInput.Visible = false;
-            }
+            
 
         }
         void btnOnePlayer_Click(object sender, EventArgs e)
@@ -175,6 +174,29 @@ namespace Hang_Man_Lite___1
             btnOnePlayer.Visible = false;
             btnTwoPlayer.Visible = false;
             lblSelectPlayerCount.Visible = false;
+
+            Words.Add("computer");
+            Words.Add("aldworth");
+            Words.Add("apple");
+            Words.Add("steven");
+            Words.Add("clark");
+            Words.Add("miller");
+            Words.Add("coding");
+            Words.Add("hangman");
+            Words.Add("project");
+            Words.Add("class");
+            Words.Add("strings");
+            Words.Add("random");
+
+            int index = randomWord.Next(Words.Count);
+            word = Words[index];
+
+            for (int i = 1; i <= word.Length; i++)
+            {
+                displayWord += "-";
+                lblWord.Text = displayWord;
+                lstGuessedWords.DataSource = letters;
+            }
         }
 
         void btnTwoPlayer_Click(object sender, EventArgs e)
