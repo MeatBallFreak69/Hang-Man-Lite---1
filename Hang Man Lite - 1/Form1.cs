@@ -52,20 +52,23 @@ namespace Hang_Man_Lite___1
             this.lblSelectPlayerCount.Location = new System.Drawing.Point(125, 130);
             this.lblSelectPlayerCount.Size = new System.Drawing.Size(250, 15);
 
-            word = "";
-            for (int i = 1; i<= word.Length;i++)
+            if (twoPlayer)
             {
-                displayWord += "-";
+                word = "";
+                for (int i = 1; i <= word.Length; i++)
+                {
+                    displayWord += "-";
+                }
+                lblWord.Text = displayWord;
+                lstGuessedWords.DataSource = letters;
             }
-            lblWord.Text = displayWord;
-            lstGuessedWords.DataSource = letters;
 
             Controls.Add(btnOnePlayer);
             Controls.Add(btnTwoPlayer);
             Controls.Add(lblSelectPlayerCount);
 
             btnOnePlayer.Click += new EventHandler(this.btnOnePlayer_Click);
-            btnOnePlayer.Click += new EventHandler(this.btnTwoPlayer_Click);
+            btnTwoPlayer.Click += new EventHandler(this.btnTwoPlayer_Click);
 
         }
 
@@ -174,8 +177,9 @@ namespace Hang_Man_Lite___1
             lblSelectPlayerCount.Visible = false;
         }
 
-        private void btnTwoPlayer_Click(object sender, EventArgs e)
+        void btnTwoPlayer_Click(object sender, EventArgs e)
         {
+            Button btn = sender as Button;
             imgHang.Visible = true;
             lblGreeting.Visible = true;
             lblLetters.Visible = true;
@@ -185,10 +189,14 @@ namespace Hang_Man_Lite___1
             btnGuess.Visible = true;
             txtGuess.Visible = true;
             txtInputWord.Visible = true;
-            btnGuess.Visible = true;
+            btnInput.Visible = true;
+            lblInstructions2.Visible = true;
+
             btnOnePlayer.Visible = false;
             btnTwoPlayer.Visible = false;
             lblSelectPlayerCount.Visible = false;
+
+            lblWord.SendToBack();
         }
     }
 }
