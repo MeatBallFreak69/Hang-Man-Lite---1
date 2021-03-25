@@ -52,6 +52,7 @@ namespace Hang_Man_Lite___1
             this.lblGreeting.Size = new System.Drawing.Size(327, 29);
             this.lblGreeting.TabIndex = 0;
             this.lblGreeting.Text = "Welcome to Hang-Man Lite";
+            this.lblGreeting.Visible = false;
             // 
             // lblLetters
             // 
@@ -61,6 +62,7 @@ namespace Hang_Man_Lite___1
             this.lblLetters.Size = new System.Drawing.Size(315, 13);
             this.lblLetters.TabIndex = 1;
             this.lblLetters.Text = "Enter a letter to reveal the hidden word. 3 strikes and you are out!";
+            this.lblLetters.Visible = false;
             // 
             // lstGuessedWords
             // 
@@ -69,6 +71,7 @@ namespace Hang_Man_Lite___1
             this.lstGuessedWords.Name = "lstGuessedWords";
             this.lstGuessedWords.Size = new System.Drawing.Size(120, 173);
             this.lstGuessedWords.TabIndex = 3;
+            this.lstGuessedWords.Visible = false;
             // 
             // lblUsedLetters
             // 
@@ -79,6 +82,7 @@ namespace Hang_Man_Lite___1
             this.lblUsedLetters.Size = new System.Drawing.Size(96, 16);
             this.lblUsedLetters.TabIndex = 4;
             this.lblUsedLetters.Text = "Used Letters";
+            this.lblUsedLetters.Visible = false;
             // 
             // txtGuess
             // 
@@ -87,6 +91,7 @@ namespace Hang_Man_Lite___1
             this.txtGuess.Name = "txtGuess";
             this.txtGuess.Size = new System.Drawing.Size(36, 20);
             this.txtGuess.TabIndex = 5;
+            this.txtGuess.Visible = false;
             this.txtGuess.TextChanged += new System.EventHandler(this.txtGuess_TextChanged);
             // 
             // btnGuess
@@ -98,6 +103,7 @@ namespace Hang_Man_Lite___1
             this.btnGuess.TabIndex = 6;
             this.btnGuess.Text = "Guess";
             this.btnGuess.UseVisualStyleBackColor = true;
+            this.btnGuess.Visible = false;
             this.btnGuess.Click += new System.EventHandler(this.btnGuess_Click);
             // 
             // imgHang
@@ -108,6 +114,7 @@ namespace Hang_Man_Lite___1
             this.imgHang.Size = new System.Drawing.Size(260, 223);
             this.imgHang.TabIndex = 2;
             this.imgHang.TabStop = false;
+            this.imgHang.Visible = false;
             // 
             // lblWord
             // 
@@ -125,16 +132,18 @@ namespace Hang_Man_Lite___1
             this.txtInputWord.Name = "txtInputWord";
             this.txtInputWord.Size = new System.Drawing.Size(100, 20);
             this.txtInputWord.TabIndex = 8;
+            this.txtInputWord.Visible = false;
             // 
             // lblInstructions2
             // 
             this.lblInstructions2.AutoSize = true;
-            this.lblInstructions2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstructions2.Location = new System.Drawing.Point(196, 314);
+            this.lblInstructions2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstructions2.Location = new System.Drawing.Point(198, 318);
             this.lblInstructions2.Name = "lblInstructions2";
-            this.lblInstructions2.Size = new System.Drawing.Size(148, 13);
+            this.lblInstructions2.Size = new System.Drawing.Size(176, 16);
             this.lblInstructions2.TabIndex = 9;
             this.lblInstructions2.Text = "Input word to guess here";
+            this.lblInstructions2.Visible = false;
             // 
             // btnInput
             // 
@@ -144,6 +153,7 @@ namespace Hang_Man_Lite___1
             this.btnInput.TabIndex = 11;
             this.btnInput.Text = "Input Word";
             this.btnInput.UseVisualStyleBackColor = true;
+            this.btnInput.Visible = false;
             this.btnInput.Click += new System.EventHandler(this.btnInput_Click);
             // 
             // frmHangman
@@ -165,6 +175,7 @@ namespace Hang_Man_Lite___1
             this.Name = "frmHangman";
             this.Text = "HangMan";
             this.Load += new System.EventHandler(this.frmHangman_Load);
+            this.MouseHover += new System.EventHandler(this.frmHangman_MouseHover);
             ((System.ComponentModel.ISupportInitialize)(this.imgHang)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -172,7 +183,6 @@ namespace Hang_Man_Lite___1
         }
 
         #endregion
-
         private System.Windows.Forms.Label lblGreeting;
         private System.Windows.Forms.Label lblLetters;
         private System.Windows.Forms.PictureBox imgHang;

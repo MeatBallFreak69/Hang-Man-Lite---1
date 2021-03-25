@@ -12,18 +12,46 @@ namespace Hang_Man_Lite___1
 {
     public partial class frmHangman : Form
     {
+        private Button btnOnePlayer = new Button();
+        private Button btnTwoPlayer = new Button();
+        private Label lblSelectPlayerCount = new Label();
         string word;
         string displayWord;
         int guessCounter = 0;
         List<string> letters = new List<string>();
+        bool onePlayer;
+        bool twoPlayer;
 
         public frmHangman()
         {
             InitializeComponent();
+            onePlayer = frmSelectPlayerCount.onePlayer;
+            twoPlayer = frmSelectPlayerCount.twoPlayer;
         }
 
         private void frmHangman_Load(object sender, EventArgs e)
         {
+            /*frmSelectPlayerCount formPlayerCount = new frmSelectPlayerCount();
+            formPlayerCount.Show();*/
+
+
+            //Player select controls/
+            btnOnePlayer.BackColor = SystemColors.Control;
+            btnOnePlayer.Name = "btnOnePlayer";
+            btnOnePlayer.Text = "One Player";
+            btnOnePlayer.Location = new System.Drawing.Point(102, 156);
+            btnOnePlayer.Size = new System.Drawing.Size(100, 50);
+
+            btnTwoPlayer.BackColor = SystemColors.Control;
+            btnTwoPlayer.Name = "btnTwoPlayer";
+            btnTwoPlayer.Text = "Two Player";
+            btnTwoPlayer.Location = new System.Drawing.Point(202, 156);
+            btnTwoPlayer.Size = new System.Drawing.Size(100, 50);
+
+            this.lblSelectPlayerCount.Text = "Please select your player count";
+            this.lblSelectPlayerCount.Location = new System.Drawing.Point(125, 130);
+            this.lblSelectPlayerCount.Size = new System.Drawing.Size(250, 15);
+
             word = "";
             for (int i = 1; i<= word.Length;i++)
             {
@@ -31,6 +59,14 @@ namespace Hang_Man_Lite___1
             }
             lblWord.Text = displayWord;
             lstGuessedWords.DataSource = letters;
+
+            Controls.Add(btnOnePlayer);
+            Controls.Add(btnTwoPlayer);
+            Controls.Add(lblSelectPlayerCount);
+
+            btnOnePlayer.Click += new EventHandler(this.btnOnePlayer_Click);
+            btnOnePlayer.Click += new EventHandler(this.btnTwoPlayer_Click);
+
         }
 
         private void txtGuess_TextChanged(object sender, EventArgs e)
@@ -82,6 +118,7 @@ namespace Hang_Man_Lite___1
                     displayWord = displayWord.Remove(index, 1);
                     displayWord = displayWord.Insert(index, toFind);
                     lblWord.Text = displayWord;
+
                 }
                     
                 if (displayWord == word)
@@ -107,6 +144,51 @@ namespace Hang_Man_Lite___1
                 displayWord += "-";
             }
             lblWord.Text = displayWord;
+        }
+
+        private void frmHangman_MouseHover(object sender, EventArgs e)
+        {
+            if (onePlayer == true)
+            {
+                lblInstructions2.Visible = false;
+                txtInputWord.Visible = false;
+                btnInput.Visible = false;
+            }
+
+        }
+        void btnOnePlayer_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            onePlayer = true;
+            imgHang.Visible = true;
+            lblGreeting.Visible = true;
+            lblLetters.Visible = true;
+            lblWord.Visible = true;
+            lstGuessedWords.Visible = true;
+            lblUsedLetters.Visible = true;
+            btnGuess.Visible = true;
+            txtGuess.Visible = true;
+
+            btnOnePlayer.Visible = false;
+            btnTwoPlayer.Visible = false;
+            lblSelectPlayerCount.Visible = false;
+        }
+
+        private void btnTwoPlayer_Click(object sender, EventArgs e)
+        {
+            imgHang.Visible = true;
+            lblGreeting.Visible = true;
+            lblLetters.Visible = true;
+            lblWord.Visible = true;
+            lstGuessedWords.Visible = true;
+            lblUsedLetters.Visible = true;
+            btnGuess.Visible = true;
+            txtGuess.Visible = true;
+            txtInputWord.Visible = true;
+            btnGuess.Visible = true;
+            btnOnePlayer.Visible = false;
+            btnTwoPlayer.Visible = false;
+            lblSelectPlayerCount.Visible = false;
         }
     }
 }
