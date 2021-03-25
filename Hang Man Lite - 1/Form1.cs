@@ -28,8 +28,18 @@ namespace Hang_Man_Lite___1
         public frmHangman()
         {
             InitializeComponent();
-            onePlayer = frmSelectPlayerCount.onePlayer;
-            twoPlayer = frmSelectPlayerCount.twoPlayer;
+            /*Words.Add("computer");
+            Words.Add("aldworth");
+            Words.Add("apple");
+            Words.Add("steven");
+            Words.Add("clark");
+            Words.Add("miller");
+            Words.Add("coding");
+            Words.Add("hangman");
+            Words.Add("project");
+            Words.Add("class");
+            Words.Add("strings");*/
+            Words.Add("random");
         }
 
         private void frmHangman_Load(object sender, EventArgs e)
@@ -73,6 +83,14 @@ namespace Hang_Man_Lite___1
 
         private void txtGuess_TextChanged(object sender, EventArgs e)
         {
+            if (txtGuess.Text != "")
+            {
+                btnGuess.Visible = true;
+            }
+            else
+            {
+                btnGuess.Visible = false;
+            }
             txtGuess.Text = txtGuess.Text.ToUpper();
             if (letters.Contains(txtGuess.Text))
             {
@@ -85,10 +103,11 @@ namespace Hang_Man_Lite___1
         {
             string toFind = txtGuess.Text;
             int index = word.IndexOf(toFind);
+               
             guess = Convert.ToChar(toFind);
-            
             if (word.Contains(toFind))// If the chosen word has the letter guess
             {
+
                 foreach (char j in word)// Iterate through every character
                 {
                     if (j.Equals(guess))// If the character = the letter guess
@@ -99,48 +118,48 @@ namespace Hang_Man_Lite___1
                             displayWord = displayWord.Remove(searchIndex, 1).Insert(searchIndex, j.ToString());
                             searchIndex = word.IndexOf(j, searchIndex + 1);
                             lblWord.Text = displayWord;
-                            if (displayWord == word)
-                            {
-                                MessageBox.Show("You win!", "Congrats!");
-                                Application.Restart();
-                                Application.ExitThread();
-                            }
+                        }
                         }
                     }
                 }
-            }
-            else if (toFind == String.Empty)
-            {
-                MessageBox.Show("Please fill in the textbox with an appropriate guess!", "Error");
-            }
             else
             {
-              guessCounter += 1;
-              letters.Add(toFind);
-              txtGuess.Text = String.Empty;
-              lstGuessedWords.DataSource = null;
-              lstGuessedWords.DataSource = letters;
-              if (guessCounter == 1)
-              {
-              imgHang.Image = Properties.Resources.hangman_1;
-              }
-              else if (guessCounter == 2)
-              {
-              imgHang.Image = Properties.Resources.hangman_2;
-              }
-              else if (guessCounter == 3)
-              {
-              imgHang.Image = Properties.Resources.hangman_dead;
-              MessageBox.Show("Please try again", "You lose!");
-              Application.Restart();
-              Application.ExitThread();
-              }
+                guessCounter += 1;
+                letters.Add(toFind);
+                txtGuess.Text = String.Empty;
+                lstGuessedWords.DataSource = null;
+                lstGuessedWords.DataSource = letters;
+                if (guessCounter == 1)
+                {
+                    imgHang.Image = Properties.Resources.hangman_1;
+                }
+                else if (guessCounter == 2)
+                {
+                    imgHang.Image = Properties.Resources.hangman_2;
+                }
+                else if (guessCounter == 3)
+                {
+                    imgHang.Image = Properties.Resources.hangman_dead;
+                    MessageBox.Show("Please try again", "You lose!");
+                    Application.Restart();
+                    Application.ExitThread();
+                }
             }
+            
             txtGuess.Text = String.Empty;
+           
+            if (displayWord == word)
+            {
+                MessageBox.Show("You win!", "Congrats!");
+                Application.Restart();
+                Application.ExitThread();
+            }
         }
 
         private void btnInput_Click(object sender, EventArgs e)
         {
+            btnGuess.Visible = false;
+            txtGuess.Visible = true;
             lblInstructions2.Visible = false;
             txtInputWord.Visible = false;
             btnInput.Visible = false;
@@ -158,7 +177,7 @@ namespace Hang_Man_Lite___1
             
 
         }
-        void btnOnePlayer_Click(object sender, EventArgs e)
+        public void btnOnePlayer_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             onePlayer = true;
@@ -168,28 +187,15 @@ namespace Hang_Man_Lite___1
             lblWord.Visible = true;
             lstGuessedWords.Visible = true;
             lblUsedLetters.Visible = true;
-            btnGuess.Visible = true;
+            btnGuess.Visible = false;
             txtGuess.Visible = true;
 
             btnOnePlayer.Visible = false;
             btnTwoPlayer.Visible = false;
             lblSelectPlayerCount.Visible = false;
 
-            Words.Add("computer");
-            Words.Add("aldworth");
-            Words.Add("apple");
-            Words.Add("steven");
-            Words.Add("clark");
-            Words.Add("miller");
-            Words.Add("coding");
-            Words.Add("hangman");
-            Words.Add("project");
-            Words.Add("class");
-            Words.Add("strings");
-            Words.Add("random");
-
-            int index = randomWord.Next(Words.Count);
-            word = Words[index];
+            int playerOneIndex = randomWord.Next(Words.Count);
+            word = Words[playerOneIndex];
 
             for (int i = 1; i <= word.Length; i++)
             {
@@ -197,10 +203,12 @@ namespace Hang_Man_Lite___1
                 lblWord.Text = displayWord;
                 lstGuessedWords.DataSource = letters;
             }
+            
         }
 
-        void btnTwoPlayer_Click(object sender, EventArgs e)
+        public void btnTwoPlayer_Click(object sender, EventArgs e)
         {
+            twoPlayer = true;
             Button btn = sender as Button;
             imgHang.Visible = true;
             lblGreeting.Visible = true;
@@ -208,10 +216,10 @@ namespace Hang_Man_Lite___1
             lblWord.Visible = true;
             lstGuessedWords.Visible = true;
             lblUsedLetters.Visible = true;
-            btnGuess.Visible = true;
-            txtGuess.Visible = true;
+            btnGuess.Visible = false;
+            txtGuess.Visible = false;
             txtInputWord.Visible = true;
-            btnInput.Visible = true;
+            btnInput.Visible = false;
             lblInstructions2.Visible = true;
 
             btnOnePlayer.Visible = false;
@@ -219,6 +227,18 @@ namespace Hang_Man_Lite___1
             lblSelectPlayerCount.Visible = false;
 
             lblWord.SendToBack();
+        }
+
+        private void txtInputWord_TextChanged(object sender, EventArgs e)
+        {
+            if (txtInputWord.Text != "")
+            {
+                btnInput.Visible = true;
+            }
+            else
+            {
+                btnInput.Visible = false;
+            }
         }
     }
 }

@@ -123,9 +123,9 @@ namespace Hang_Man_Lite___1
             this.lblWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWord.Location = new System.Drawing.Point(-1, 302);
             this.lblWord.Name = "lblWord";
-            this.lblWord.Size = new System.Drawing.Size(208, 73);
+            this.lblWord.Size = new System.Drawing.Size(54, 73);
             this.lblWord.TabIndex = 7;
-            this.lblWord.Text = "--------";
+            this.lblWord.Text = "-";
             this.lblWord.Visible = false;
             // 
             // txtInputWord
@@ -135,6 +135,7 @@ namespace Hang_Man_Lite___1
             this.txtInputWord.Size = new System.Drawing.Size(100, 20);
             this.txtInputWord.TabIndex = 8;
             this.txtInputWord.Visible = false;
+            this.txtInputWord.TextChanged += new System.EventHandler(this.txtInputWord_TextChanged);
             // 
             // lblInstructions2
             // 
