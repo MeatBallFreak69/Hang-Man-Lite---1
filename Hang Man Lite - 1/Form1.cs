@@ -31,17 +31,18 @@ namespace Hang_Man_Lite___1
         {
             InitializeComponent();
             Words.Add("computer");
-            Words.Add("aldworth");
             Words.Add("apple");
-            Words.Add("steven");
-            Words.Add("clark");
-            Words.Add("miller");
             Words.Add("coding");
             Words.Add("hangman");
             Words.Add("project");
             Words.Add("class");
             Words.Add("strings");
             Words.Add("random");
+            Words.Add("keyboard");
+            Words.Add("mouse");
+            Words.Add("design");
+            Words.Add("sharp");
+            Words.Add("programming");
         }
 
         private void frmHangman_Load(object sender, EventArgs e)
