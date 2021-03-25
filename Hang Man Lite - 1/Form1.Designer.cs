@@ -178,7 +178,6 @@ namespace Hang_Man_Lite___1
             this.Name = "frmHangman";
             this.Text = "HangMan";
             this.Load += new System.EventHandler(this.frmHangman_Load);
-            this.MouseHover += new System.EventHandler(this.frmHangman_MouseHover);
             ((System.ComponentModel.ISupportInitialize)(this.imgHang)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
