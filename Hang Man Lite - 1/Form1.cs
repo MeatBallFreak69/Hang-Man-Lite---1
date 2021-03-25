@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace Hang_Man_Lite___1
 {
     public partial class frmHangman : Form
     {
+        SoundPlayer sound;
         private Button btnOnePlayer = new Button();
         private Button btnTwoPlayer = new Button();
         private Label lblSelectPlayerCount = new Label();
@@ -137,6 +139,8 @@ namespace Hang_Man_Lite___1
                 else if (guessCounter == 3)
                 {
                     imgHang.Image = Properties.Resources.hangman_dead;
+                    sound = new SoundPlayer(Properties.Resources.The_Price_is_Right_Losing_Horn___Gaming_Sound_Effect__HD_);
+                    sound.Play();
                     MessageBox.Show("Please try again", "You lose!");
                     Application.Restart();
                     Application.ExitThread();
@@ -147,6 +151,8 @@ namespace Hang_Man_Lite___1
            
             if (displayWord == word)
             {
+                sound = new SoundPlayer(Properties.Resources.Victory_Screech);
+                sound.Play();
                 MessageBox.Show("You win!", "Congrats!");
                 Application.Restart();
                 Application.ExitThread();

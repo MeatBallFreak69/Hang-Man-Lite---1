@@ -92,5 +92,11 @@
   <ItemGroup>
     <None Include="Resources\hangman_empty.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Victory Screech.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\The Price is Right Losing Horn - Gaming Sound Effect %28HD%29.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

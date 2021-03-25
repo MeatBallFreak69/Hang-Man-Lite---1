@@ -99,5 +99,23 @@ namespace Hang_Man_Lite___1.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream The_Price_is_Right_Losing_Horn___Gaming_Sound_Effect__HD_ {
+            get {
+                return ResourceManager.GetStream("The_Price_is_Right_Losing_Horn___Gaming_Sound_Effect__HD_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Victory_Screech {
+            get {
+                return ResourceManager.GetStream("Victory_Screech", resourceCulture);
+            }
+        }
     }
 }
