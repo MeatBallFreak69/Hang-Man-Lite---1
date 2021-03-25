@@ -62,16 +62,6 @@ namespace Hang_Man_Lite___1
             this.lblSelectPlayerCount.Location = new System.Drawing.Point(125, 130);
             this.lblSelectPlayerCount.Size = new System.Drawing.Size(250, 15);
 
-            if (twoPlayer)
-            {
-                word = "";
-                for (int i = 1; i <= word.Length; i++)
-                {
-                    displayWord += "-";
-                }
-                lblWord.Text = displayWord;
-                lstGuessedWords.DataSource = letters;
-            }
             Controls.Add(btnOnePlayer);
             Controls.Add(btnTwoPlayer);
             Controls.Add(lblSelectPlayerCount);
