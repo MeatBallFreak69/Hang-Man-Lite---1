@@ -8,6 +8,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Hang_Man_Lite___1
 {
@@ -151,13 +152,16 @@ namespace Hang_Man_Lite___1
 
         private void btnInput_Click(object sender, EventArgs e)
         {
+            char[] charsToTrim = { '*', ' ', '\'' };
+            string input = txtInputWord.Text.ToUpper();
+
             btnGuess.Visible = false;
             txtGuess.Visible = true;
             lblInstructions2.Visible = false;
             txtInputWord.Visible = false;
             btnInput.Visible = false;
 
-            word = txtInputWord.Text.ToUpper();
+            word = input.Trim(charsToTrim);    
             for (int i = 1; i <= word.Length; i++)
             {
                 displayWord += "-";
